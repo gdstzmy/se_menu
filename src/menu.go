@@ -15,24 +15,66 @@ package main
 
 import (
 	"fmt"
-	"os"
+	"strings"
 )
 
-func main() {
-	fmt.Println(("hello,word!"))
+type tDataNode struct {
+	cmd     string
+	desc    string
+	handler func() int
+	next    *tDataNode
+}
 
-	var cmd string = ""
+// 命令数组
+var cmdArray = []*tDataNode{
+	&tDataNode{"help", "Display available commands.", nil, nil},
+	&tDataNode{"version", "Display version information.", version, nil},
+	&tDataNode{"exit", "Exit the program.", exit, nil},
+}
 
-	for true {
-		fmt.Scan(&cmd)
+func help() int {
+	fmt.Println("Available commands:")
+	for _, cmd := range cmdArray {
+		fmt.Printf("    %-10s%s\n", cmd.cmd, cmd.desc)
+	}
+	return 0
+}
 
-		if cmd == "help" {
-			fmt.Printf("this is help cmd!\n")
-		} else if cmd == "quit" {
-			os.Exit(0)
-		} else {
-			fmt.Printf("wrong cmd!\n")
+func version() int {
+	fmt.Println("Version 1.0")
+	return 0
+}
+
+func exit() int {
+	fmt.Println("Exiting...")
+	return 1
+}
+
+func findCmd(cmd string) *tDataNode {
+	for _, node := range cmdArray {
+		if strings.ToLower(node.cmd) == strings.ToLower(cmd) {
+			return node
 		}
 	}
+	return nil
+}
 
+func main() {
+	// 将 help() 函数的定义放在 main() 函数之后
+	cmdArray[0].handler = help
+
+	var input string
+	for {
+		fmt.Print(">> ")
+		fmt.Scanln(&input)
+		node := findCmd(input)
+		if node == nil {
+			fmt.Printf("Command not found: %s\n", input)
+			continue
+		}
+		node.handler()
+		if node.cmd == "exit" {
+			break
+		}
+	}
 }
