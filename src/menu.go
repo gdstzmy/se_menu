@@ -60,7 +60,7 @@ func findCmd(cmd string) *tDataNode {
 }
 
 func main() {
-	// 将 help() 函数的定义放在 main() 函数之后
+
 	cmdArray[0].handler = help
 
 	var input string
