@@ -1,7 +1,7 @@
 深入理解callback函数
 ---
 
-###基本数据结构
+### 基本数据结构
 **`DataNode`存储节点信息：**
 ```C++
 typedef struct DataNode
@@ -32,7 +32,7 @@ struct LinkTable
 ```
 ---
 
-###lab5.2 代码工作机制：
+### lab5.2 代码工作机制：
 main函数等待用户输入命令，当用户输入命令后，程序会调用`FindCmd`函数来查找对应的命令数据节点。如果找到了数据节点，则输出该命令的描述并且执行对应的操作。
 ```c++
 printf("%s - %s\n", p->cmd, p->desc);
@@ -42,7 +42,7 @@ printf("%s - %s\n", p->cmd, p->desc);
         }
 ```
 ----
-###callback函数探幽：
+### callback函数探幽：
 其中`FindCmd`调用`SearchLinkTableNode`,`SearchLinkTableNode`函数中存在一个作为参数的函数`Condition`。
 ```c++
 tLinkTableNode * SearchLinkTableNode(tLinkTable *pLinkTable, 
@@ -78,6 +78,6 @@ int SearchCondition(tLinkTableNode * pLinkTableNode, void * args)
     return NULL;
 ```
 ----
-###抽象分层
+### 抽象分层
 代码主要实现了`DataNode`和`LinkTableNode`管理的分流，使得节点和指针的管理分开，不会互相干扰和影响。
 
