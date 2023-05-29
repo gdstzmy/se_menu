@@ -25,7 +25,7 @@ VS Code Remote Development是一组功能和扩展，旨在使开发者能够在
 - NamedPipeDebugAdapter是继承自NetworkDebugAdapter的类，它通过命名管道（在Windows上）或UNIX域套接字（在非Windows上）连接到调试适配器。在createConnection方法中，它使用net.createConnection方法创建一个套接字连接到指定的路径。
 - ExecutableDebugAdapter是继承自StreamDebugAdapter的类，它以一个单独的进程作为调试适配器，并通过标准输入/输出与之通信。在startSession方法中，它使用cp.spawn或cp.fork方法启动一个子进程，并将其标准输入和标准输出与适配器的通信管道连接起来。
 
-根据上述代码分析，以下是使用VS Code远程连接到远程服务器进行远程调试的逆向工程步骤：
+根据上述代码分析，以下是使用VS Code远程连接到远程服务器进行远程调试的逆向工程步骤：  
 1、通过网络连接方式（Socket或NamedPipe），在本地计算机和远程服务器之间建立调试适配器的通信通道。  
 2、在本地计算机上启动VS Code，并安装相应的调试扩展（如JavaScript或Python调试器）。 
 3、在VS Code的调试功能中配置调试器，指定调试适配器的类型为SocketDebugAdapter或NamedPipeDebugAdapter，并提供连接到远程服务器的相关参数，如主机地址和端口（对于Socket连接）或命名管道路径（对于NamedPipe连接）。  
