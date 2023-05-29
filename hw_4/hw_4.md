@@ -27,9 +27,7 @@ VS Code Remote Development是一组功能和扩展，旨在使开发者能够在
 
 根据上述代码分析，以下是使用VS Code远程连接到远程服务器进行远程调试的逆向工程步骤：
 1、通过网络连接方式（Socket或NamedPipe），在本地计算机和远程服务器之间建立调试适配器的通信通道。
-
 2、在本地计算机上启动VS Code，并安装相应的调试扩展（如JavaScript或Python调试器）。
-
 3、在VS Code的调试功能中配置调试器，指定调试适配器的类型为SocketDebugAdapter或NamedPipeDebugAdapter，并提供连接到远程服务器的相关参数，如主机地址和端口（对于Socket连接）或命名管道路径（对于NamedPipe连接）。
 4、在VS Code中打开待调试的远程项目或文件，并设置断点或调试配置。
 5、运行调试会话，VS Code将使用逆向工程中分析的调试适配器代码，通过网络连接与远程服务器上的调试适配器进行通信。
