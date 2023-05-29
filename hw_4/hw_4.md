@@ -13,7 +13,7 @@ VS Code Remote Development是一组功能和扩展，旨在使开发者能够在
 
 ### 逆向工程
 可以根据代码存储库，以了解分析调试功能的实现细节：
-1.`src/vs/workbench/contrib/debug`目录：包含有关调试功能的实现代码，包括调试器插件的架构、调试会话的管理、调试协议的处理等。
+1.`src/vs/workbench/contrib/debug`目录：包含有关调试功能的实现代码，包括调试器插件的架构、调试会话的管理、调试协议的处理等。  
 2.`src/vs/workbench/contrib/debug/node`目录：包含与Node.js调试相关的实现代码，例如Node.js调试器的插件和调试协议的实现。
 3.`src/vs/workbench/api/common/extHostDebugService.ts`文件定义了VS Code的调试器API，包括断点设置、变量查看、执行命令等功能的接口。
 
